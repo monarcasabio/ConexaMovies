@@ -13,6 +13,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using ConexaMovies.Application.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,10 @@ builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddSingleton<GlobalExceptionMiddleware>();
+
+builder.Services.AddScoped<ISwapiSyncService, SwapiSyncService>();
+builder.Services.AddHostedService<SwapiBackgroundService>();
+builder.Services.AddHttpClient<ISwapiClient, SwapiClient>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
