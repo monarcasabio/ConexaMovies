@@ -50,6 +50,16 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
             new Role { Id = (byte)UserRole.Regular, Name = "Regular" },
             new Role { Id = (byte)UserRole.Admin, Name = "Admin" }
         );
+
+        // Seed admin user
+        builder.Entity<User>().HasData(new User
+        {
+            Id = 1,
+            Username = "admin",
+            PasswordHash = "$11$Qu8HTq.K5xN3yLrPtuOY4.jy.ws9IbEgQH9MbjT0BV2HlEyO.jX36",
+            RoleId = (byte)UserRole.Admin
+        });
+
         base.OnModelCreating(builder);
     }
 }
