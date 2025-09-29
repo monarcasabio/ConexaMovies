@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\" />
-    <Folder Include="Security\" />
     <Folder Include="Validators\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -22,6 +21,10 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConexaMovies.Domain\ConexaMovies.Domain.csproj" />
   </ItemGroup>
 
 </Project>

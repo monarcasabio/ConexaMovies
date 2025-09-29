@@ -17,8 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ConexaMovies.Application\ConexaMovies.Application.csproj" />
-    <ProjectReference Include="..\src\ConexaMovies.Domain\ConexaMovies.Domain.csproj" />
+    <ProjectReference Include="..\..\src\ConexaMovies.Application\ConexaMovies.Application.csproj" />
+    <ProjectReference Include="..\..\src\ConexaMovies.Infrastructure\ConexaMovies.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\ConexaMovies.WebApi\ConexaMovies.WebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
