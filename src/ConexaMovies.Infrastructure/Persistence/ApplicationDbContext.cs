@@ -56,7 +56,7 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
         {
             Id = 1,
             Username = "admin",
-            PasswordHash = "$11$Qu8HTq.K5xN3yLrPtuOY4.jy.ws9IbEgQH9MbjT0BV2HlEyO.jX36",
+            PasswordHash = "$2a$11$yZLBC.7RSw3wEWvFU1SB0.5EF4OYZ1I.9HX048hNpzkWWLy1lF4h.",
             RoleId = (byte)UserRole.Admin
         });
 

@@ -3,6 +3,7 @@ using System;
 using ConexaMovies.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConexaMovies.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250929214640_AddMovieUniqueIndex")]
+    partial class AddMovieUniqueIndex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -112,7 +115,7 @@ namespace ConexaMovies.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            PasswordHash = "$2a$11$yZLBC.7RSw3wEWvFU1SB0.5EF4OYZ1I.9HX048hNpzkWWLy1lF4h.",
+                            PasswordHash = "$11$Qu8HTq.K5xN3yLrPtuOY4.jy.ws9IbEgQH9MbjT0BV2HlEyO.jX36",
                             RoleId = (byte)2,
                             Username = "admin"
                         });
