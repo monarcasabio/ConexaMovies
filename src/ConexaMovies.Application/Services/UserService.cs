@@ -4,6 +4,7 @@ using ConexaMovies.Domain.Entities;
 using ConexaMovies.Domain.Enums;
 using ConexaMovies.Domain.Interfaces;
 using ConexaMovies.Domain.Exceptions;
+using Microsoft.Extensions.Logging;
 
 namespace ConexaMovies.Application.Services;
 
@@ -29,7 +30,7 @@ public sealed class UserService : IUserService
     public async Task<TokenResponse> RegisterAsync(RegisterDto dto, CancellationToken ct = default)
     {
         if (await _userRepository.ExistsByUsernameAsync(dto.Username, ct))
-            throw new ValidationException("Username already exists");
+            throw new ConflictException("Username already exists.");
 
         var user = new User
         {
@@ -38,7 +39,7 @@ public sealed class UserService : IUserService
             RoleId = (byte)UserRole.Regular
         };
 
-        await _userRepository.AddAsync(user);
+        await _userRepository.AddAsync(user);          
         await _unitOfWork.SaveChangesAsync(ct);
 
         // Ahora que el usuario está guardado, podemos crear el token para un auto-login
@@ -57,7 +58,7 @@ public sealed class UserService : IUserService
         var user = await _userRepository.GetByUsernameWithRoleAsync(dto.Username, ct);
 
         if (user is null || !_hasher.Verify(dto.Password, user.PasswordHash))
-            throw new ValidationException("Invalid credentials");
+            throw new UnauthorizedException("Invalid credentials");
 
         var claims = new[]
         {
